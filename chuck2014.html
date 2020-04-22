@@ -7,7 +7,7 @@
     <meta name="description" content="Laboratorio Computación Cliente Web">
     <meta name="author" content="Duvan Angarita">
 
-    <title>Chuck 2006-2014</title>
+    <title>Chuck 2014</title>
 
     <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet">
     <link href="bootstrap/css/jumbotron.css" rel="stylesheet">
@@ -15,12 +15,17 @@
     <script src="https://code.jquery.com/jquery-3.5.0.min.js" integrity="sha256-xNzN2a4ltkB44Mc/Jz3pT4iU1cmeR0FkXs4pru/JxaQ=" crossorigin="anonymous"></script>
     <script src="bootstrap/js/jquery.icndb.min.js" ></script>
     <script type="text/javascript">
-        window.fetch('http://api.icndb.com/jokes/random/10', {
-            method: 'get'
-        }).then(function(response) 
+        window.fetch('http://api.icndb.com/jokes/random/10', 
         {
-            console.log(response);
-            response.forEach(element => { $("ul.list-group").append('<li class="list-group-item">' + element.joke + '</li>'); });
+            method: 'get'
+        })
+        .then(function(response) {
+            return response.json();
+        })
+        .then(function(data) {
+          ul = document.getElementsByClassName('list-group');
+          jokes = data.value; 
+          jokes.forEach(element => { $("ul.list-group").append('<li class="list-group-item">' + element.joke + '</li>'); });
         });
     </script>
 </head>
