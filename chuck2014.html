@@ -11,9 +11,7 @@
 
     <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet">
     <link href="bootstrap/css/jumbotron.css" rel="stylesheet">
-
-    <script src="https://code.jquery.com/jquery-3.5.0.min.js" integrity="sha256-xNzN2a4ltkB44Mc/Jz3pT4iU1cmeR0FkXs4pru/JxaQ=" crossorigin="anonymous"></script>
-    <script src="bootstrap/js/jquery.icndb.min.js" ></script>
+    
     <script type="text/javascript">
         window.fetch('http://api.icndb.com/jokes/random/10', 
         {
@@ -23,9 +21,9 @@
             return response.json();
         })
         .then(function(data) {
-          ul = document.getElementsByClassName('list-group');
-          jokes = data.value; 
-          jokes.forEach(element => { $("ul.list-group").append('<li class="list-group-item">' + element.joke + '</li>'); });
+          var ul = document.getElementById("list");
+          jokes = data.value;          
+          jokes.forEach(element => { ul.innerHTML += '<li class="list-group-item">' + element.joke + '</li>'; });
         });
     </script>
 </head>
@@ -51,7 +49,7 @@
       <div class="container">
         <div class="row">
           <div class="col-12">
-            <ul class="list-group">
+            <ul class="list-group" id="list">
             </ul>
           </div>
         </div> 
