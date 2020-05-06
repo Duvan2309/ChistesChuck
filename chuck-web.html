@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    
+    <script src="https://code.jquery.com/jquery-3.5.0.min.js"
+        integrity="sha256-xNzN2a4ltkB44Mc/Jz3pT4iU1cmeR0FkXs4pru/JxaQ=" crossorigin="anonymous">
+    </script>
+
+    <!-- linking Skeleton -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/skeleton/2.0.4/skeleton.css">
+    
+    <!-- linking ICNDB -->
+    <link rel="import" href="https://raw.githubusercontent.com/erikringsmuth/chuck-norris-joke/master/chuck-norris-joke.html">
+    
+    <!-- script -->
+    <script>
+        var bool = false;
+        var joke = '<chuck-norris-joke>'
+
+        function generateJokeTable(){ 
+            for(var i = 0; i <= 10; i++){
+                $('table').append('<tr><td>'+joke+'</td></tr>')
+                console.log(joke)
+            }
+            bool = true;
+        }
+
+        function addjokes(){
+            for(var i = 0; i <= 10; i++){
+                $('table').prepend('<tr><td>'+joke+'</td></tr>')
+                console.log('adding'+joke)
+            }
+        }
+        function getJokes(){
+            if(bool === true){
+                addjokes();
+            }else{generateJokeTable();}
+        }
+        
+        window.onload = function(){
+            generateJokeTable();
+        }
+    </script>
+
+    <!-- custom skeleton -->
+    <style>
+        body {
+            font-size: 1.5em;
+            line-height: 1.6;
+            font-weight: 400;
+            font-family: "Raleway", "HelveticaNeue", "Helvetica Neue", Helvetica, Arial, sans-serif;
+            color: #222;
+        }
+    
+        .button {
+            border-radius: 100px;
+        }
+    
+        .section-heading,
+        .section-description {
+            margin-top: 1.5em;
+            margin-bottom: 1.2em;
+        }
+    </style>
+
+</head>
+<body>
+    <div class="section-heading">
+        <div class="container">
+            <div class="row">
+                <h4>Chuck Norris Jokes</h4>
+                <p class="lead">Using ICNDB Web Component Linked and Stylized Table with Skeleton</p>
+                <a href="javascript:getJokes()" class="button button-primary">Get more jokes</a>
+                <hr class="my-3">
+            </div>
+        </div>
+    </div>
+    <div class="section-description">
+        <div class="container">
+            <div class="row">
+                <table class="table u-full-width"></table>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
